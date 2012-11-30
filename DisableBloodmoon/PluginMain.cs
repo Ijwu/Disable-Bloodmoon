@@ -41,6 +41,15 @@ namespace DisableBloodmoon
         {
             GameHooks.Update += OnUpdate;
         }
+        
+         protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                GameHooks.Update -= OnUpdate;
+            }
+            base.Dispose(disposing);
+        }
 
         private void OnUpdate()
         {
